@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>مطعم قشطة - Link Hub</title>
+  <meta name="description" content="مطعم قشطة - مفيش دايت هنا يا صاحبي 😂 - روابط الطلب والتواصل والموقع">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&family=Tajawal:wght@500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous" />
+
+  <style>
+    :root {
+      --primary-orange: #FF5A1F;
+      --radius-xl: 20px;
+      --radius-pill: 50px;
+      --font-heading: 'Cairo', sans-serif;
+      --font-body: 'Tajawal', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
+      background-color: #0A0705;
+      font-family: var(--font-body);
+      color: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background Image with 80% Overlay + 30% Extra Blur */
+    .bg-image-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background-image: url('Background1.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: blur(5px);
+      transform: scale(1.08);
+      /* Prevents blurred edge bleeding */
+    }
+
+    .bg-image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.80);
+    }
+
+    /* Fully Responsive Mobile-First Container Layout */
+    .hub-wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 480px;
+      padding: clamp(20px, 5vh, 32px) clamp(14px, 4vw, 20px) clamp(24px, 6vh, 40px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Header & Profile */
+    .brand-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: clamp(18px, 4vh, 26px);
+      width: 100%;
+    }
+
+    .logo-container {
+      width: clamp(100px, 25vw, 125px);
+      height: clamp(100px, 25vw, 125px);
+      margin-bottom: 12px;
+      border-radius: 50%;
+      padding: 4px;
+      background: #FFFFFF;
+      box-shadow: 0 8px 24px rgba(255, 90, 31, 0.3);
+    }
+
+    .logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .brand-name {
+      font-family: var(--font-heading);
+      font-size: clamp(1.75rem, 6vw, 2.1rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .brand-slogan {
+      font-family: var(--font-body);
+      font-size: clamp(0.95rem, 3.5vw, 1.05rem);
+      font-weight: 700;
+      color: #FF7A45;
+      background: rgba(255, 90, 31, 0.15);
+      padding: 4px 16px;
+      border-radius: var(--radius-pill);
+      display: inline-block;
+      margin-bottom: 14px;
+      border: 1px solid rgba(255, 90, 31, 0.3);
+    }
+
+    /* Status Badge & Hours */
+    .status-badge-container {
+      display: flex;
+      align-items: center;
+      gap: clamp(6px, 2vw, 10px);
+      background: rgba(255, 255, 255, 0.12);
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: clamp(0.8rem, 3vw, 0.9rem);
+      font-weight: 700;
+    }
+
+    .status-indicator.open {
+      color: #4EFE84;
+    }
+
+    .status-indicator.closed {
+      color: #FF5252;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .status-indicator.open .status-dot {
+      background-color: #00E676;
+      box-shadow: 0 0 0 3px rgba(0, 230, 118, 0.3);
+    }
+
+    .status-indicator.closed .status-dot {
+      background-color: #FF5252;
+      box-shadow: 0 0 0 3px rgba(255, 82, 82, 0.3);
+    }
+
+    .hours-text {
+      font-size: clamp(0.8rem, 3vw, 0.88rem);
+      font-weight: 500;
+      color: #E2D7D0;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+      padding-right: 8px;
+    }
+
+    /* Primary Links Section - Reduced Card Height by ~15% & 50% Transparency (0.50 opacity) */
+    .links-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(10px, 2.5vh, 12px);
+      margin-bottom: clamp(20px, 4vh, 26px);
+    }
+
+    .link-card {
+      position: relative;
+      width: 100%;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 16px;
+      /* Reduced vertical padding by 15% */
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.70);
+      border: 1px solid rgba(255, 255, 255, 0.40);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+    }
+
+    .link-card.primary-hero {
+      background: linear-gradient(135deg, var(--primary-orange) 0%, #E04810 100%);
+      border: none;
+      color: #FFFFFF;
+      padding: 13px 20px;
+      /* Reduced vertical padding by 15% */
+      box-shadow: 0 8px 22px rgba(255, 90, 31, 0.45);
+    }
+
+    .link-card.primary-hero .link-title {
+      color: #FFFFFF;
+      font-size: clamp(1.05rem, 4vw, 1.18rem);
+      font-weight: 800;
+    }
+
+    .link-card.primary-hero .link-subtitle {
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .link-card.primary-hero .icon-box,
+    .link-card.primary-hero .action-arrow {
+      background: rgba(255, 255, 255, 0.22);
+      color: #FFFFFF;
+    }
+
+    .link-content-left {
+      display: flex;
+      align-items: center;
+      gap: clamp(10px, 3vw, 14px);
+    }
+
+    .icon-box {
+      width: clamp(38px, 10vw, 42px);
+      /* Slightly reduced size to match 15% lower height */
+      height: clamp(38px, 10vw, 42px);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(1.15rem, 3.8vw, 1.3rem);
+      flex-shrink: 0;
+    }
+
+    .icon-box.whatsapp-bg {
+      background: rgba(37, 211, 102, 0.22);
+      color: #0E7367;
+    }
+
+    .icon-box.location-bg {
+      background: rgba(255, 90, 31, 0.20);
+      color: var(--primary-orange);
+    }
+
+    .link-text-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .link-title {
+      font-family: var(--font-heading);
+      font-size: clamp(0.95rem, 3.8vw, 1.05rem);
+      font-weight: 800;
+      color: #0F0A07;
+    }
+
+    .link-subtitle {
+      font-size: clamp(0.75rem, 3.0vw, 0.82rem);
+      font-weight: 700;
+      color: #382B24;
+    }
+
+    .action-arrow {
+      width: clamp(28px, 7vw, 32px);
+      height: clamp(28px, 7vw, 32px);
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0F0A07;
+      font-size: clamp(0.75rem, 2.8vw, 0.82rem);
+    }
+
+    .badge-tag {
+      position: absolute;
+      top: 0;
+      left: 16px;
+      background: #FFD166;
+      color: #5C3D00;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
+
+    /* Social Links Grid */
+    .social-section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(0.85rem, 3.2vw, 0.92rem);
+      font-weight: 700;
+      color: #E2D7D0;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .social-section-title::before,
+    .social-section-title::after {
+      content: '';
+      height: 1px;
+      width: 20px;
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .social-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(8px, 2.5vw, 12px);
+      margin-bottom: clamp(24px, 4vh, 30px);
+    }
+
+    .social-card {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 6px;
+      /* Reduced vertical padding by 15% */
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.70);
+      /* Reduced transparency by 20% (0.70 -> 0.50 opacity) */
+      border: 1px solid rgba(255, 255, 255, 0.30);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      gap: 6px;
+    }
+
+    .social-icon {
+      font-size: clamp(1.35rem, 4.5vw, 1.55rem);
+    }
+
+    .social-card.tiktok .social-icon {
+      color: #000000;
+    }
+
+    .social-card.facebook .social-icon {
+      color: #1877F2;
+    }
+
+    .social-card.instagram .social-icon {
+      color: #E4405F;
+    }
+
+    .social-name {
+      font-family: var(--font-heading);
+      font-size: clamp(0.78rem, 3vw, 0.85rem);
+      font-weight: 800;
+      color: #0F0A07;
+    }
+
+    /* Toast Notification Modal */
+    .toast-modal {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(30, 20, 16, 0.95);
+      border: 1px solid rgba(255, 90, 31, 0.4);
+      color: #FFFFFF;
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      font-size: clamp(0.85rem, 3vw, 0.92rem);
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+      width: calc(100% - 40px);
+      max-width: 380px;
+      justify-content: center;
+    }
+
+    .toast-modal.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Footer & Divider */
+    .divider {
+      width: 70px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(255, 90, 31, 0.6), transparent);
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: clamp(0.78rem, 2.8vw, 0.85rem);
+      color: #E2D7D0;
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .footer-heart {
+      color: var(--primary-orange);
+    }
+
+    /* Extra Small Screen Adjustments (iPhone SE, Galaxy Fold, etc) */
+    @media (max-width: 360px) {
+      .hub-wrapper {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .link-card {
+        padding: 9px 12px;
+      }
+
+      .icon-box {
+        width: 34px;
+        height: 34px;
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Image with Overlay & Blur -->
+  <div class="bg-image-container">
+    <div class="bg-image-overlay"></div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="hub-wrapper">
+
+    <!-- Header Section -->
+    <header class="brand-header">
+      <div class="logo-container">
+        <img src="Logo.png" alt="مطعم قشطة - Logo" class="logo-img">
+      </div>
+      <h1 class="brand-name">مطعم قشطة</h1>
+      <div class="brand-slogan">مفيش دايت هنا يا صاحبي 😂</div>
+
+      <div class="status-badge-container">
+        <div id="statusIndicator" class="status-indicator">
+          <span class="status-dot"></span>
+          <span id="statusText">جاري التحقق...</span>
+        </div>
+        <div class="hours-text">
+          <i class="fa-regular fa-clock" style="margin-left: 4px;"></i>
+          من 2:00 الضهر - 6:00 صباحا
+        </div>
+      </div>
+    </header>
+
+    <!-- Primary Action Links -->
+    <section class="links-container">
+
+      <!-- Order Online -->
+      <a href="https://qeshta-restaurant.vercel.app/" class="link-card primary-hero">
+        <span class="badge-tag">الطلب المباشر</span>
+        <div class="link-content-left">
+          <div class="icon-box">
+            <i class="fa-solid fa-bag-shopping"></i>
+          </div>
+          <div class="link-text-group">
+            <span class="link-title">اطلب اونلاين</span>
+            <span class="link-subtitle">تصفح المنيو واطلب مباشرة لقدم بابك</span>
+          </div>
+        </div>
+        <div class="action-arrow">
+          <i class="fa-solid fa-arrow-left"></i>
+        </div>
+      </a>
+
+      <!-- WhatsApp Order -->
+      <a href="https://wa.me/201006821635" class="link-card" target="_blank" rel="noopener">
+        <div class="link-content-left">
+          <div class="icon-box whatsapp-bg">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+          <div class="link-text-group">
+            <span class="link-title">واتساب تواصل وطلبات</span>
+            <span class="link-subtitle">محادثة مباشرة وسريعة مع المطعم</span>
+          </div>
+        </div>
+        <div class="action-arrow">
+          <i class="fa-solid fa-arrow-left"></i>
+        </div>
+      </a>
+
+      <!-- Location -->
+      <a href="https://maps.app.goo.gl/nbMeNUSp3vMAMMaD7" class="link-card" target="_blank" rel="noopener">
+        <div class="link-content-left">
+          <div class="icon-box location-bg">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="link-text-group">
+            <span class="link-title">لوكيشن</span>
+            <span class="link-subtitle">العنوان وتوجيهات الاتجاهات على الخريطة</span>
+          </div>
+        </div>
+        <div class="action-arrow">
+          <i class="fa-solid fa-arrow-left"></i>
+        </div>
+      </a>
+
+    </section>
+
+    <!-- Social Links Grid -->
+    <div class="social-section-title">تابعنا على السوشيال ميديا</div>
+    <section class="social-grid">
+
+      <a href="https://www.tiktok.com/@kshta20" class="social-card tiktok" target="_blank" rel="noopener">
+        <i class="fa-brands fa-tiktok social-icon"></i>
+        <span class="social-name">TikTok</span>
+      </a>
+
+      <a href="https://www.facebook.com/profile.php?id=61563673360469" class="social-card facebook" target="_blank"
+        rel="noopener">
+        <i class="fa-brands fa-facebook-f social-icon"></i>
+        <span class="social-name">Facebook</span>
+      </a>
+
+      <div id="instagramBtn" class="social-card instagram">
+        <i class="fa-brands fa-instagram social-icon"></i>
+        <span class="social-name">Instagram</span>
+      </div>
+
+    </section>
+
+    <div class="divider"></div>
+    <footer class="footer">
+      <div>صُنع بـ <span class="footer-heart">❤</span> لعشاق الأكل</div>
+      <div>© 2026 مطعم قشطة</div>
+    </footer>
+
+  </main>
+
+  <!-- Toast Notification Modal -->
+  <div id="toastModal" class="toast-modal">
+    <i class="fa-solid fa-circle-info" style="color: #FF9F1C; font-size: 1.1rem;"></i>
+    <span>لم يتم الاتاحة في الوقت الحالي</span>
+  </div>
+
+  <script>
+    // 1. Dynamic Store Status (2:00 PM to 6:00 AM)
+    function updateStoreStatus() {
+      const currentHour = new Date().getHours();
+      const isOpen = (currentHour >= 14 || currentHour < 6);
+
+      const statusIndicator = document.getElementById('statusIndicator');
+      const statusText = document.getElementById('statusText');
+
+      if (isOpen) {
+        statusIndicator.className = 'status-indicator open';
+        statusText.textContent = 'مفتوح الان';
+      } else {
+        statusIndicator.className = 'status-indicator closed';
+        statusText.textContent = 'مغلق';
+      }
+    }
+
+    updateStoreStatus();
+
+    // 2. Instagram Toast Handler
+    const instagramBtn = document.getElementById('instagramBtn');
+    const toastModal = document.getElementById('toastModal');
+    let toastTimeout;
+
+    instagramBtn.addEventListener('click', () => {
+      toastModal.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toastModal.classList.remove('show');
+      }, 3000);
+    });
+  </script>
+
+</body>
+
+</html>
