@@ -7,20 +7,28 @@
   <title>مطعم قشطة - Link Hub</title>
   <meta name="description" content="مطعم قشطة - مفيش دايت هنا يا صاحبي 😂 - روابط الطلب والتواصل والموقع">
 
+  <!-- Critical Above-The-Fold Asset Preloads -->
+  <link rel="preload" as="image" href="Background1.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="Logo.webp" type="image/webp" fetchpriority="high">
+
+  <!-- Non-blocking Google Fonts loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&family=Tajawal:wght@500;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    crossorigin="anonymous" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&family=Tajawal:wght@500;700&display=swap"
+    media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&family=Tajawal:wght@500;700&display=swap">
+  </noscript>
 
   <style>
     :root {
       --primary-orange: #FF5A1F;
       --radius-xl: 20px;
       --radius-pill: 50px;
-      --font-heading: 'Cairo', sans-serif;
-      --font-body: 'Tajawal', sans-serif;
+      --font-heading: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'Tajawal', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
     * {
@@ -45,7 +53,7 @@
       position: relative;
     }
 
-    /* Background Image with 80% Overlay + 30% Extra Blur */
+    /* Background Image with 80% Overlay + Blur */
     .bg-image-container {
       position: fixed;
       top: 0;
@@ -53,13 +61,12 @@
       width: 100%;
       height: 100%;
       z-index: 0;
-      background-image: url('Background1.jpg');
+      background-image: url('Background1.webp');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       filter: blur(5px);
       transform: scale(1.08);
-      /* Prevents blurred edge bleeding */
     }
 
     .bg-image-overlay {
@@ -71,7 +78,7 @@
       background-color: rgba(0, 0, 0, 0.80);
     }
 
-    /* Fully Responsive Mobile-First Container Layout */
+    /* Responsive Mobile-First Container Layout */
     .hub-wrapper {
       position: relative;
       z-index: 1;
@@ -182,9 +189,12 @@
       color: #E2D7D0;
       border-right: 1px solid rgba(255, 255, 255, 0.2);
       padding-right: 8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
-    /* Primary Links Section - Reduced Card Height by ~15% & 50% Transparency (0.50 opacity) */
+    /* Primary Links Section */
     .links-container {
       width: 100%;
       display: flex;
@@ -201,7 +211,6 @@
       align-items: center;
       justify-content: space-between;
       padding: 11px 16px;
-      /* Reduced vertical padding by 15% */
       border-radius: var(--radius-xl);
       background: rgba(255, 255, 255, 0.70);
       border: 1px solid rgba(255, 255, 255, 0.40);
@@ -214,7 +223,6 @@
       border: none;
       color: #FFFFFF;
       padding: 13px 20px;
-      /* Reduced vertical padding by 15% */
       box-shadow: 0 8px 22px rgba(255, 90, 31, 0.45);
     }
 
@@ -242,18 +250,16 @@
 
     .icon-box {
       width: clamp(38px, 10vw, 42px);
-      /* Slightly reduced size to match 15% lower height */
       height: clamp(38px, 10vw, 42px);
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: clamp(1.15rem, 3.8vw, 1.3rem);
       flex-shrink: 0;
     }
 
     .icon-box.whatsapp-bg {
-      background: rgba(37, 211, 102, 0.22);
+      background: rgba(37, 211, 102, 0.18);
       color: #0E7367;
     }
 
@@ -290,7 +296,6 @@
       align-items: center;
       justify-content: center;
       color: #0F0A07;
-      font-size: clamp(0.75rem, 2.8vw, 0.82rem);
     }
 
     .badge-tag {
@@ -341,28 +346,28 @@
       align-items: center;
       justify-content: center;
       padding: 12px 6px;
-      /* Reduced vertical padding by 15% */
       border-radius: 16px;
       background: rgba(255, 255, 255, 0.70);
-      /* Reduced transparency by 20% (0.70 -> 0.50 opacity) */
-      border: 1px solid rgba(255, 255, 255, 0.30);
+      border: 1px solid rgba(255, 255, 255, 0.40);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
       gap: 6px;
     }
 
-    .social-icon {
-      font-size: clamp(1.35rem, 4.5vw, 1.55rem);
+    .social-icon-svg {
+      width: clamp(22px, 5vw, 26px);
+      height: clamp(22px, 5vw, 26px);
+      fill: currentColor;
     }
 
-    .social-card.tiktok .social-icon {
+    .social-card.tiktok .social-icon-svg {
       color: #000000;
     }
 
-    .social-card.facebook .social-icon {
+    .social-card.facebook .social-icon-svg {
       color: #1877F2;
     }
 
-    .social-card.instagram .social-icon {
+    .social-card.instagram .social-icon-svg {
       color: #E4405F;
     }
 
@@ -429,7 +434,7 @@
       color: var(--primary-orange);
     }
 
-    /* Extra Small Screen Adjustments (iPhone SE, Galaxy Fold, etc) */
+    /* Extra Small Screen Adjustments */
     @media (max-width: 360px) {
       .hub-wrapper {
         padding-left: 10px;
@@ -443,7 +448,6 @@
       .icon-box {
         width: 34px;
         height: 34px;
-        font-size: 1.1rem;
       }
     }
   </style>
@@ -451,7 +455,7 @@
 
 <body>
 
-  <!-- Background Image with Overlay & Blur -->
+  <!-- Background Image with Overlay -->
   <div class="bg-image-container">
     <div class="bg-image-overlay"></div>
   </div>
@@ -462,7 +466,8 @@
     <!-- Header Section -->
     <header class="brand-header">
       <div class="logo-container">
-        <img src="Logo.png" alt="مطعم قشطة - Logo" class="logo-img">
+        <img src="Logo.webp" alt="مطعم قشطة - Logo" class="logo-img" width="125" height="125" decoding="async"
+          fetchpriority="high">
       </div>
       <h1 class="brand-name">مطعم قشطة</h1>
       <div class="brand-slogan">مفيش دايت هنا يا صاحبي 😂</div>
@@ -473,7 +478,10 @@
           <span id="statusText">جاري التحقق...</span>
         </div>
         <div class="hours-text">
-          <i class="fa-regular fa-clock" style="margin-left: 4px;"></i>
+          <svg class="social-icon-svg" style="width:14px; height:14px; color:#E2D7D0;" viewBox="0 0 24 24">
+            <path fill="currentColor"
+              d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0 2C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm.5-13v4.629l3.158 3.158-1.414 1.414L11 14.414V7h1.5z" />
+          </svg>
           من 2:00 الضهر - 6:00 صباحا
         </div>
       </div>
@@ -487,7 +495,10 @@
         <span class="badge-tag">الطلب المباشر</span>
         <div class="link-content-left">
           <div class="icon-box">
-            <i class="fa-solid fa-bag-shopping"></i>
+            <svg class="social-icon-svg" style="width:20px; height:20px; color:#FFFFFF;" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M19 7h-3V6a4 4 0 0 0-8 0v1H5a1 1 0 0 0-1 1v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8a1 1 0 0 0-1-1zm-9-1a2 2 0 0 1 4 0v1h-4V6zm8 13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V9h2v1a1 1 0 0 0 2 0V9h4v1a1 1 0 0 0 2 0V9h2v10z" />
+            </svg>
           </div>
           <div class="link-text-group">
             <span class="link-title">اطلب اونلاين</span>
@@ -495,7 +506,10 @@
           </div>
         </div>
         <div class="action-arrow">
-          <i class="fa-solid fa-arrow-left"></i>
+          <svg class="social-icon-svg" style="width:14px; height:14px; color:#FFFFFF;" viewBox="0 0 24 24">
+            <path fill="currentColor"
+              d="m7.828 11 5.364-5.364-1.414-1.414L4 12l7.778 7.778 1.414-1.414L7.828 13H20v-2H7.828z" />
+          </svg>
         </div>
       </a>
 
@@ -503,7 +517,10 @@
       <a href="https://wa.me/201006821635" class="link-card" target="_blank" rel="noopener">
         <div class="link-content-left">
           <div class="icon-box whatsapp-bg">
-            <i class="fa-brands fa-whatsapp"></i>
+            <svg class="social-icon-svg" style="width:22px; height:22px; color:#0E7367;" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.264 8.264 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.183 8.183 0 0 1 2.41 5.83c.02 4.54-3.68 8.24-8.22 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.8-.23-.09-.39-.12-.56.12-.17.25-.66.8-.81.97-.15.17-.3.19-.55.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.73 2.64 4.2 3.7.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.17-.48-.29z" />
+            </svg>
           </div>
           <div class="link-text-group">
             <span class="link-title">واتساب تواصل وطلبات</span>
@@ -511,7 +528,10 @@
           </div>
         </div>
         <div class="action-arrow">
-          <i class="fa-solid fa-arrow-left"></i>
+          <svg class="social-icon-svg" style="width:14px; height:14px; color:#0F0A07;" viewBox="0 0 24 24">
+            <path fill="currentColor"
+              d="m7.828 11 5.364-5.364-1.414-1.414L4 12l7.778 7.778 1.414-1.414L7.828 13H20v-2H7.828z" />
+          </svg>
         </div>
       </a>
 
@@ -519,7 +539,10 @@
       <a href="https://maps.app.goo.gl/nbMeNUSp3vMAMMaD7" class="link-card" target="_blank" rel="noopener">
         <div class="link-content-left">
           <div class="icon-box location-bg">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg class="social-icon-svg" style="width:20px; height:20px; color:#FF5A1F;" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M12 23.721 4.403 14.54C2.86 12.673 2 10.334 2 7.892 2 3.533 5.485 0 9.78 0c2.518 0 4.887 1.229 6.347 3.284C17.587 1.229 19.956 0 22.474 0 26.77 0 30.254 3.533 30.254 7.892c0 2.442-.86 4.781-2.403 6.648L20.254 23.721a1.5 1.5 0 0 1-2.254 0zM12 2C8.686 2 6 4.686 6 8c0 5.25 6 12 6 12s6-6.75 6-12c0-3.314-2.686-6-6-6zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+            </svg>
           </div>
           <div class="link-text-group">
             <span class="link-title">لوكيشن</span>
@@ -527,7 +550,10 @@
           </div>
         </div>
         <div class="action-arrow">
-          <i class="fa-solid fa-arrow-left"></i>
+          <svg class="social-icon-svg" style="width:14px; height:14px; color:#0F0A07;" viewBox="0 0 24 24">
+            <path fill="currentColor"
+              d="m7.828 11 5.364-5.364-1.414-1.414L4 12l7.778 7.778 1.414-1.414L7.828 13H20v-2H7.828z" />
+          </svg>
         </div>
       </a>
 
@@ -537,19 +563,31 @@
     <div class="social-section-title">تابعنا على السوشيال ميديا</div>
     <section class="social-grid">
 
+      <!-- TikTok -->
       <a href="https://www.tiktok.com/@kshta20" class="social-card tiktok" target="_blank" rel="noopener">
-        <i class="fa-brands fa-tiktok social-icon"></i>
+        <svg class="social-icon-svg" viewBox="0 0 24 24">
+          <path
+            d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-5.2-1.74 2.89 2.89 0 0 1 2.31-1.2v-3.5a6.34 6.34 0 0 0-1.11.1 6.36 6.36 0 1 0 6.13 6.34V9.4a8.16 8.16 0 0 0 5.09 1.76V7.67a4.85 4.85 0 0 1-3-.98z" />
+        </svg>
         <span class="social-name">TikTok</span>
       </a>
 
+      <!-- Facebook -->
       <a href="https://www.facebook.com/profile.php?id=61563673360469" class="social-card facebook" target="_blank"
         rel="noopener">
-        <i class="fa-brands fa-facebook-f social-icon"></i>
+        <svg class="social-icon-svg" viewBox="0 0 24 24">
+          <path
+            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+        </svg>
         <span class="social-name">Facebook</span>
       </a>
 
+      <!-- Instagram -->
       <div id="instagramBtn" class="social-card instagram">
-        <i class="fa-brands fa-instagram social-icon"></i>
+        <svg class="social-icon-svg" viewBox="0 0 24 24">
+          <path
+            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg>
         <span class="social-name">Instagram</span>
       </div>
 
@@ -557,15 +595,18 @@
 
     <div class="divider"></div>
     <footer class="footer">
-      <div>صُنع بـ <span class="footer-heart">❤</span> لعشاق الأكل</div>
-      <div>© 2026 مطعم قشطة</div>
+      <div>صُنع بـ <span class="footer-heart">❤</span> لعشاق الأكل الأكيل</div>
+      <div>© 2026 A7</div>
     </footer>
 
   </main>
 
   <!-- Toast Notification Modal -->
   <div id="toastModal" class="toast-modal">
-    <i class="fa-solid fa-circle-info" style="color: #FF9F1C; font-size: 1.1rem;"></i>
+    <svg class="social-icon-svg" style="width:18px; height:18px; color:#FF9F1C;" viewBox="0 0 24 24">
+      <path fill="currentColor"
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+    </svg>
     <span>لم يتم الاتاحة في الوقت الحالي</span>
   </div>
 
